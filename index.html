@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -35,17 +34,29 @@
 
         <section id="cadastro" class="tela">
             <h1>Barbie Dream World</h1>
-            <p>Crie seu jogador para começar a aventura!</p>
+            <p>Crie seu jogador para comecar a aventura!</p>
 
             <input
                 type="text"
                 id="nomeJogador"
-                placeholder="Digite seu nome"
+                placeholder="Digite o nome da personagem"
                 maxlength="30"
                 autocomplete="off"
             >
 
-            <button id="botaoCriar" type="button">Criar jogador</button>
+            <label for="corCabelo">Escolha a cor do cabelo:</label>
+            <select id="corCabelo" aria-label="Cor do cabelo">
+                <option value="#ffee6b">Loiro</option>
+                <option value="#6b3f2a">Castanho</option>
+                <option value="#29202a">Preto</option>
+                <option value="#b94b32">Ruivo</option>
+                <option value="#f28ac2">Rosa</option>
+                <option value="#8d72d9">Roxo</option>
+                <option value="#4c9ed9">Azul</option>
+            </select>
+
+            <button id="botaoCriar" type="button">Criar personagem</button>
+            <button id="botaoInstrucoesCadastro" type="button" class="botao-secundario">Como jogar?</button>
 
             <p id="mensagemCadastro"></p>
         </section>
@@ -59,7 +70,20 @@
             <div id="listaJogadores"></div>
 
             <button id="botaoJogar" type="button">Jogar</button>
-            <button id="botaoTrocar" type="button">Voltar ao cadastro</button>
+            <button id="botaoInstrucoesMenu" type="button" class="botao-secundario">Instrucoes</button>
+            <button id="botaoTrocar" type="button" aria-label="Voltar para a criacao">Voltar para a criacao</button>
+        </section>
+
+        <section id="instrucoes" class="tela escondido" aria-labelledby="tituloInstrucoes">
+            <button id="botaoVoltarInstrucoes" class="botao-voltar" type="button" aria-label="Voltar para a pagina anterior">voltar</button>
+            <h1 id="tituloInstrucoes">Como jogar?</h1>
+            <p><strong>1.</strong> Crie sua personagem e escolha a cor do cabelo.</p>
+            <p><strong>2.</strong> Selecione a personagem no menu e aperte “Jogar”.</p>
+            <p><strong>3.</strong> Use a tecla <strong>espaço</strong>, a <strong>seta para cima</strong> ou toque na tela para pular os obstáculos.</p>
+            <p><strong>4.</strong> Tente avançar sem bater nos obstáculos para fazer pontos.</p>
+            <h2>Objetivo do jogo</h2>
+            <p>Faça a maior pontuação possível, explore o mapa e passe pela Dreamhouse, Hospital, Parque e Escola para salvar seu progresso.</p>
+            <button id="botaoEntendi" type="button">Entendi, vamos jogar!</button>
         </section>
 
         <section id="gameOver" class="tela escondido">
