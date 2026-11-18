@@ -5,11 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbie Dream World</title>
     <link rel="stylesheet" href="barbie.css">
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="barbie.js" defer></script>
 </head>
 <body>
+    <style>
+.botao-voltar-jogo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10000;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 20px;
+    background: #f3a6cf;
+    color: #70234d;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-    <main id="jogo">
+.botao-voltar-jogo[hidden] {
+    display: none !important;
+}
+</style>
+   
+<main id="jogo">
+
+        <button id="btnVoltarJogo" type="button" class="botao-voltar-jogo" hidden> ← Voltar ao menu</button>
 
         <div class="ceu">
             <div class="nuvem nuvem1"></div>
@@ -71,8 +93,8 @@
 
             <button id="botaoJogar" type="button">Jogar</button>
             <button id="botaoInstrucoesMenu" type="button" class="botao-secundario">Instrucoes</button>
-            <button id="botaoTrocar" type="button" aria-label="Voltar para a criacao">Voltar para a criacao</button>
-        </section>
+            <button id="botaoTrocar" type="button" aria-label="Voltar para a criacao">Voltar para a criacao</button>  </section> 
+
 
         <section id="instrucoes" class="tela escondido" aria-labelledby="tituloInstrucoes">
             <button id="botaoVoltarInstrucoes" class="botao-voltar" type="button" aria-label="Voltar para a pagina anterior">voltar</button>

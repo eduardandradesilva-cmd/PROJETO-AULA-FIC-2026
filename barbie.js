@@ -1,3 +1,11 @@
+const SUPABASE_URL = "https://vpnketlrgbrxdzvhqayb.supabase.co";
+const SUPABASE_KEY = "sb_publishable_OJABREb9KiFlIw_-J34zLg_o8ZE6pXU";
+
+const banco = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+const btnVoltarJogo = document.getElementById("btnVoltarJogo");
 const jogo = document.getElementById("jogo");
 const personagem = document.getElementById("personagem");
 const pontuacao = document.getElementById("pontuacao");
@@ -384,6 +392,7 @@ function iniciarJogo() {
     pararJogo();
 
     jogando = true;
+    btnVoltarJogo.hidden = false;
     pulando = false;
     pontos = 0;
     velocidade = 5;
@@ -413,6 +422,7 @@ function iniciarJogo() {
 
 function pararJogo() {
     jogando = false;
+    btnVoltarJogo.hidden = true;
 
     if (quadroAnimacao !== null) {
         cancelAnimationFrame(quadroAnimacao);
@@ -628,7 +638,17 @@ jogo.addEventListener("pointerdown", evento => {
         pular();
     }
 });
+btnVoltarJogo.addEventListener("click", () => {
+    pararJogo();
 
+    obstaculos.forEach(item => item.elemento.remove());
+    obstaculos = [];
+
+    locais.forEach(local => local.elemento.remove());
+    locais = [];
+
+    mostrarMenuJogadores();
+});
 prepararCenario();
 
 if (jogadores.length > 0) {
@@ -637,4 +657,21 @@ if (jogadores.length > 0) {
 } else {
     mostrarTela(cadastro);
 }
+async function salvarJogador(nome, pontuacao, cor) {
 
+    const { data, error } = await banco
+        .from("jogadores")
+        .insert([
+            {
+                nome: nome,
+                pontuacao: pontuacao,
+                cor: cor
+            }
+        ]);
+
+    if (error) {
+        console.log("Erro:", error);
+    } else {
+        console.log("Jogador salvo!");
+    }
+}
